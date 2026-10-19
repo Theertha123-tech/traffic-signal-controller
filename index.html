@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Multi-Level Traffic & Emergency Signal Controller</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <div class="logo">🚦</div>
+  <div class="heading"><div class="eyebrow">SMART CITY • DSA PROJECT</div><h1>Smart Multi-Level Traffic & Emergency Signal Controller</h1><p>Interactive traffic intersection simulation</p></div>
+  <span class="live"><i></i> SIMULATION READY</span>
+</header>
+<main>
+  <section class="stats">
+    <div class="stat"><span>🚗</span><div><small>Normal vehicles waiting</small><strong id="normalCount">0</strong></div></div>
+    <div class="stat"><span>🚑</span><div><small>Emergency vehicles waiting</small><strong id="emergencyCount">0</strong></div></div>
+    <div class="stat"><span>🟢</span><div><small>Active signal</small><strong id="activeSignal">North</strong></div></div>
+    <div class="stat"><span>✅</span><div><small>Vehicles passed</small><strong id="passedCount">0</strong></div></div>
+  </section>
+  <section class="layout">
+    <div class="panel intersection-panel">
+      <div class="panel-title"><div><div class="eyebrow">LIVE VIEW</div><h2>Four-lane intersection</h2></div><span class="badge" id="modeBadge">Normal traffic</span></div>
+      <div class="intersection">
+        <div class="road vertical"></div><div class="road horizontal"></div>
+        <div class="lane-name north">NORTH <small id="northTotal">0 waiting</small></div>
+        <div class="lane-name east">EAST <small id="eastTotal">0 waiting</small></div>
+        <div class="lane-name south">SOUTH <small id="southTotal">0 waiting</small></div>
+        <div class="lane-name west">WEST <small id="westTotal">0 waiting</small></div>
+        <div class="signal-box"><div class="lights"><i id="lightRed" class="red active"></i><i id="lightYellow" class="yellow"></i><i id="lightGreen" class="green"></i></div><b id="signalText">RED</b></div>
+        <div class="car north-car">🚙</div><div class="car east-car">🚗</div><div class="car south-car">🚕</div><div class="car west-car">🚐</div>
+        <div id="emergencyBanner" class="emergency-banner">🚨 Emergency priority active</div>
+      </div>
+      <div class="legend"><span><i class="dot red-dot"></i> Red: Stop</span><span><i class="dot green-dot"></i> Green: Go</span><span>🚑 Emergency vehicle</span></div>
+      <div class="signal-note" id="signalNote">North lane currently has the green signal.</div>
+    </div>
+    <aside class="panel controls">
+      <div class="eyebrow">CONTROL PANEL</div><h2>Manage traffic</h2>
+      <label for="emergencyLane">Emergency vehicle lane</label>
+      <select id="emergencyLane"><option>North</option><option>East</option><option>South</option><option>West</option></select>
+      <div class="emergency-buttons">
+        <button id="addAmbulance" class="urgent">🚑 Add Ambulance</button>
+        <button id="addFire" class="urgent">🚒 Add Fire Engine</button>
+        <button id="addPolice" class="urgent">🚓 Add Police Vehicle</button>
+      </div>
+      <label for="density">Traffic density</label>
+      <select id="density"><option>Low</option><option selected>Medium</option><option>High</option></select>
+      <div class="buttons"><button id="nextSignal" class="primary">Next Signal →</button><button id="passVehicle" class="secondary">Pass Vehicle</button></div>
+      <button id="reset" class="reset">↻ Reset Queues</button>
+      <div class="priority-note"><b>Emergency priority order</b><p>1. Ambulance<br>2. Fire Engine<br>3. Police Vehicle</p><small>Emergency vehicles are handled before normal vehicles. Lower priority number means higher priority.</small></div>
+      <div class="status"><small>SYSTEM STATUS</small><p id="status">System ready</p></div>
+    </aside>
+  </section>
+  <section class="panel queues-panel">
+    <div class="panel-title"><div><div class="eyebrow">DATA STRUCTURES</div><h2>Vehicle queues by lane</h2></div><span class="badge">FIFO Queue + Priority Queue</span></div>
+    <div class="queues" id="queues"></div>
+    <div class="log-area"><div class="panel-title"><div><div class="eyebrow">ACTIVITY</div><h2>Recent system events</h2></div></div><ul id="log"><li>Simulation initialized. Add vehicles to begin.</li></ul></div>
+  </section>
+  <footer>Java DSA project • Browser-based demonstration based on the uploaded Java Swing program</footer>
+</main>
+<script src="script.js"></script>
+</body></html>
